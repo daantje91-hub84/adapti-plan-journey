@@ -1,0 +1,99 @@
+/* ========================================
+   Progress Journal - Haupt-Stylesheet
+   ======================================== */
+
+/* === 1. Globale Variablen & Reset === */
+:root {
+  --main-red: #E3202D;
+  --main-blue: #1223A8;
+  --text: #0b0b0b;
+  --muted: #6b6b6b;
+  --light-gray: #f0f2f5;
+  --border-color: #d9d9d9;
+  --radius: 12px;
+  --header-height: 64px;
+  --nav-height-mobile: 68px;
+  --sidenav-width-desktop: 240px;
+  --sidenav-width-collapsed: 80px;
+  --transition-speed: 0.3s;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", "Helvetica", Arial, sans-serif;
+  background: var(--light-gray); /* Hintergrund für die App */
+  color: var(--text);
+  transition: padding-left var(--transition-speed) ease-in-out;
+}
+
+/* === 2. App Layout (Dashboard) === */
+.app-body {
+  padding-top: var(--header-height);
+}
+.app-header { display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: var(--header-height); background: #fff; border-bottom: 1px solid var(--border-color); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+.header-left { display: flex; align-items: center; gap: 16px; }
+.hamburger-menu { display: none; cursor: pointer; padding: 8px; margin-left: -8px; color: var(--muted); }
+.app-header__logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.app-header__logo .icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--main-red), var(--main-blue)); color: #fff; }
+.app-header__logo .text { font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 18px; color: var(--main-blue); text-transform: uppercase; }
+.app-header__actions { display: flex; align-items: center; gap: 20px; color: var(--muted); }
+.app-header__actions .material-icons { font-size: 28px; cursor: pointer; }
+.main-content { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; min-height: calc(100vh - var(--header-height)); padding: 24px; padding-bottom: var(--nav-height-mobile); transition: padding-left var(--transition-speed) ease-in-out; }
+
+/* === 3. Responsive Navigation === */
+.app-nav { background: #fff; z-index: 50; transition: width var(--transition-speed) ease-in-out; }
+.nav-item { text-decoration: none; color: var(--muted); display: flex; align-items: center; font-weight: 600; transition: color 0.2s, background-color 0.2s; white-space: nowrap; overflow: hidden; }
+.nav-item.active { color: var(--main-blue); }
+.nav-item .nav-text { transition: opacity 0.2s ease-in-out; }
+
+/* Mobile Nav */
+@media (max-width: 767px) {
+  .app-nav { display: flex; justify-content: space-around; height: var(--nav-height-mobile); border-top: 1px solid var(--border-color); position: fixed; bottom: 0; left: 0; right: 0; }
+  .nav-item { flex-direction: column; justify-content: center; font-size: 12px; gap: 4px; padding: 4px 8px; }
+  .nav-item .material-icons { font-size: 24px; }
+}
+
+/* Desktop Nav */
+@media (min-width: 768px) {
+  .app-body { padding-left: var(--sidenav-width-collapsed); }
+  .app-body.sidenav-expanded { padding-left: var(--sidenav-width-desktop); }
+  .hamburger-menu { display: block; }
+  .main-content { padding-bottom: 24px; }
+  .app-nav { display: flex; flex-direction: column; position: fixed; left: 0; top: var(--header-height); bottom: 0; width: var(--sidenav-width-collapsed); border-right: 1px solid var(--border-color); padding: 16px 0; }
+  .app-body.sidenav-expanded .app-nav { width: var(--sidenav-width-desktop); }
+  .nav-item { flex-direction: row; justify-content: flex-start; font-size: 15px; gap: 16px; padding: 12px 26px; }
+  .nav-item:hover { background-color: var(--light-gray); }
+  .nav-item.active { background-color: rgba(18, 35, 168, 0.1); font-weight: 700; }
+  .nav-item .material-icons { font-size: 26px; }
+  .nav-text { opacity: 0; }
+  .app-body.sidenav-expanded .nav-text { opacity: 1; }
+  .app-body.sidenav-expanded .nav-item { padding: 12px 24px; }
+}
+
+/* === 4. Dashboard & Projekt-Karten === */
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin-bottom: 24px; }
+.dashboard-header h1 { font-family: 'Montserrat', sans-serif; font-size: 28px; margin: 0; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; width: 100%; max-width: 1200px; }
+.project-card { background: #fff; border-radius: var(--radius); border: 1px solid var(--border-color); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; text-decoration: none; color: var(--text); }
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(15,23,55,0.08); }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.project-title { font-size: 18px; font-weight: 700; margin: 0; line-height: 1.4; text-align: left; }
+.card-menu { color: var(--muted); }
+.card-body { flex-grow: 1; text-align: left;}
+.next-milestone { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 4px 0; }
+.milestone-title { font-size: 16px; font-weight: 600; margin: 0; }
+.card-footer { margin-top: 20px; }
+.progress-info { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.progress-label { color: var(--muted); }
+.progress-percent { color: var(--text); }
+.card-progress-bar { width: 100%; height: 8px; background-color: var(--light-gray); border-radius: 4px; overflow: hidden; }
+.card-progress-fill { height: 100%; background-color: var(--main-blue); border-radius: 4px; }
+.project-card-placeholder { border: 2px dashed var(--border-color); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); font-weight: 600; min-height: 220px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.project-card-placeholder:hover { border-color: var(--main-blue); color: var(--main-blue); }
+.project-card-placeholder .material-icons { font-size: 36px; margin-bottom: 8px; }
+.quick-add-btn { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--main-blue); color: #fff; border: none; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(18,35,168,0.2); transition: transform 0.2s; }
+.quick-add-btn:hover { transform: scale(1.1); }
+.button-cta { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: var(--radius); text-decoration: none; font-size: 16px; font-weight: 700; cursor: pointer; border: none; background-color: var(--main-blue); color: #fff; transition: background-color 0.2s; }
+.button-cta:hover { background-color: #1a2cb1; }
