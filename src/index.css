@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 220 15% 97%;
+    --foreground: 220 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 15% 25%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 15% 25%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 214 84% 56%;
+    --radius: 0.75rem;
+
+    /* Progress Journal warm color palette */
+    --warm-blue: 214 84% 56%;
+    --warm-violet: 262 80% 65%;
+    --warm-green: 142 76% 47%;
+    --warm-orange: 25 95% 64%;
+    
+    /* Progress specific colors */
+    --progress-bg: 220 14% 96%;
+    --progress-fill: 214 84% 56%;
+    
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(214 84% 56%), hsl(262 80% 65%));
+    --gradient-cool: linear-gradient(135deg, hsl(142 76% 47%), hsl(25 95% 64%));
+    
+    /* Shadows */
+    --shadow-warm: 0 10px 30px -10px hsl(214 84% 56% / 0.3);
+    --shadow-card: 0 4px 20px -2px hsl(220 15% 15% / 0.08);
+    --shadow-elevated: 0 8px 32px -4px hsl(220 15% 15% / 0.12);
+  }
+
+  .dark {
+    --background: 220 15% 8%;
+    --foreground: 220 15% 95%;
+    --card: 220 15% 10%;
+    --card-foreground: 220 15% 95%;
+    --popover: 220 15% 10%;
+    --popover-foreground: 220 15% 95%;
+    --primary: 214 84% 56%;
+    --primary-foreground: 220 15% 8%;
+    --secondary: 220 15% 14%;
+    --secondary-foreground: 220 15% 85%;
+    --muted: 220 15% 14%;
+    --muted-foreground: 220 10% 54%;
+    --accent: 220 15% 14%;
+    --accent-foreground: 220 15% 85%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 15% 95%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 214 84% 56%;
+    
+    /* Dark mode adjustments for warm colors */
+    --warm-blue: 214 84% 66%;
+    --warm-violet: 262 80% 75%;
+    --warm-green: 142 76% 57%;
+    --warm-orange: 25 95% 74%;
+    
+    --progress-bg: 220 15% 18%;
+    --progress-fill: 214 84% 66%;
+    
+    --shadow-warm: 0 10px 30px -10px hsl(214 84% 66% / 0.4);
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.2);
+    --shadow-elevated: 0 8px 32px -4px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+  
+  .gradient-cool {
+    background: var(--gradient-cool);
+  }
+  
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .progress-bar {
+    @apply w-full bg-progress-bg rounded-full h-2 overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-progress-fill rounded-full transition-all duration-500 ease-out;
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+}
