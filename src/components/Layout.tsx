@@ -8,7 +8,8 @@ import {
   Plus,
   Menu,
   X,
-  Home
+  Home,
+  Inbox
 } from 'lucide-react'
 import { Button } from './ui/button'
 
@@ -22,9 +23,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const navigation = [
     { name: 'Dashboard', href: '/', icon: Home },
+    { name: 'Inbox', href: '/inbox', icon: Inbox },
+    { name: 'Heute', href: '/today', icon: Calendar },
     { name: 'Projekte', href: '/projects', icon: Target },
-    { name: 'Timeline', href: '/timeline', icon: Calendar },
-    { name: 'Analytics', href: '/analytics', icon: BarChart3 },
+    { name: 'Timeline', href: '/timeline', icon: BarChart3 },
     { name: 'Einstellungen', href: '/settings', icon: Settings },
   ]
 
